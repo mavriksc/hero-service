@@ -1,4 +1,4 @@
-package com.mavriksc.overcomp;
+package com.mavriksc.heroService;
 
 import java.util.Collection;
 import java.util.stream.Stream;

@@ -1,4 +1,4 @@
-package com.mavriksc.overcomp;
+package com.mavriksc.heroService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

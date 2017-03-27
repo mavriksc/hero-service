@@ -13,9 +13,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,8 +45,8 @@ public class HeroServiceApplication {
 @RestController
 @RequestMapping("/heroes")
 class HeroRestController{
-    @Autowired
-    HeroRepo heroRepo;
+    
+    private HeroRepo heroRepo;
     
     @GetMapping
     public Collection<Hero> listHeros(){
@@ -78,6 +75,10 @@ class HeroRestController{
     @GetMapping(value = "/search")
     public Collection<Hero> searchHeros(@RequestParam String name){
         return heroRepo.nameContaining(name);
+    }
+    @Autowired
+    HeroRestController(HeroRepo heroRepo){
+        this.heroRepo=heroRepo;
     }
 }
 
